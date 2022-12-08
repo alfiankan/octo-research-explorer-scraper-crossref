@@ -29,7 +29,7 @@ def start():
     tor_binary = join(tbb_dir, cm.DEFAULT_TOR_BINARY_PATH)
     tor_process = launch_tbb_tor_with_stem(tbb_path=tbb_dir, torrc=torrc, tor_binary=tor_binary)
 
-    Controller.from_port(port=str(control_port)).authenticate()
+    Controller.from_port(port=control_port).authenticate()
     driver = TorBrowserDriver(tbb_dir, socks_port=socks_port, control_port=control_port, tor_cfg=cm.USE_STEM,tbb_logfile_path='/dev/null' )
     driver.load_url("https://scholar.google.com")
     print("CONNECTED")
